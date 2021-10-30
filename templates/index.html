@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play Tennis | Prediction App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      .title {
+        display: block;
+        padding: 15px;
+        width: 100%;
+        background-color: cornflowerblue;
+        color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .input-container {
+        max-width: 800px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        border-radius: 5px;
+        top: 10px;
+        background-color: white;
+      }
+
+      .input-form > input {
+        width: 60%;
+        padding: 10px;
+        border: 0;
+        border-bottom: 1px solid cornflowerblue;
+        font-weight: bold;
+      }
+
+      .input-form > label {
+        font-weight: bold;
+      }
+
+      .input-form > input:focus {
+        outline: 0;
+        border-bottom: 2px solid cornflowerblue;
+      }
+
+      .input-form > input:focus::placeholder {
+        font-weight: bold;
+      }
+
+      .input-form > input::placeholder {
+        color: cornflowerblue;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="text-center title">
+        <h2>Play Tennis Prediction</h2>
+      </div>
+      <div class="container input-container mt-2">
+        <h4 class="text-center mt-3">Input Current Weather Data</h4>
+        <br />
+        <div class="container">
+          <form action="{{ url_for('prediction') }}" method="post">
+            <div class="row g-3">
+              <div class="col-md-6 input-form text-center">
+                <label class="pb-2 input-group-text" for="outlook"
+                  >Outlook</label
+                >
+                <select class="form-select" id="outlook" name="outlook">
+                  <option value="0">Overcast</option>
+                  <option value="1">Rain</option>
+                  <option value="2">Sunny</option>
+                </select>
+              </div>
+              <div class="col-md-6 input-form text-center">
+                <label class="pb-2 input-group-text" for="temp"
+                  >Temperature</label
+                >
+                <select class="form-select" id="temp" name="temp">
+                  <option value="0">Cool</option>
+                  <option value="1">Hot</option>
+                  <option value="2">Mild</option>
+                </select>
+              </div>
+              <div class="col-md-6 input-form text-center">
+                <label class="pb-2 input-group-text" for="humidity"
+                  >Humidity</label
+                >
+                <select class="form-select" id="humidity" name="humidity">
+                  <option value="0">High</option>
+                  <option value="1">Normal</option>
+                </select>
+              </div>
+              <div class="col-md-6 input-form text-center">
+                <label class="pb-2 input-group-text" for="wind">Wind</label>
+                <select class="form-select" id="wind" name="wind">
+                  <option value="0">Strong</option>
+                  <option value="1">Weak</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-success">
+                  Prediksi
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <section>
+      <div class="container input-container mt-3">
+        <div class="row">
+          <div class="col-lg-9 mx-auto mt-3">
+            <table class="table table-borderless text-center">
+              <h5 class="text-center">The Weather Data</h5>
+              <thead>
+                <tr class="table-info">
+                  <th scope="col">Outlook</th>
+                  <th scope="col">Temperature</th>
+                  <th scope="col">Humidity</th>
+                  <th scope="col">Wind</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>{{ outlook }}</th>
+                  <th>{{ temp }}</th>
+                  <th>{{ humidity }}</th>
+                  <th>{{ wind }}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="container input-container mt-2 text-center">
+        <h3>Prediction Result</h3>
+        <h4 style="font-weight: bold">Play Tennis : {{ predicted }}</h4>
+      </div>
+    </section>
+  </body>
+</html>
