@@ -21,7 +21,6 @@ Jinja2==3.0.2
 joblib==1.1.0
 keras==2.6.0
 Kivy==2.0.0
-kivy-deps.angle==0.3.0
 kivy-deps.glew==0.3.0
 kivy-deps.sdl2==0.3.1
 Kivy-Garden==0.1.4
